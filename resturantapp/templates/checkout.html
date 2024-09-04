@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="h-100 h-custom" style="background-color: #eee;">
+  <div class.container h-100 py-5>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card shopping-cart" style="border-radius: 15px;">
+          <div class="card-body">
+
+            <div class="row">
+              <div class.col-lg-6 px-5 py-4>
+
+                <h3>Your Order:</h3>
+
+                {% if item %}
+                {% for data in item %}
+
+                <div class="d-flex justify-content-center row mt-2">
+                    <div class="col-md-10">
+                        <div class="row p-2 bg-white border rounded">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{data.items.image.url}}"></div>
+                            <div class="col-md-6 mt-1">
+                                <h5 class="badge bg-success">{{data.items.nameitems}}</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>{{data.items.price}}SAR</span>
+                                </div>
+                           
+                                <p class="text-justify text-truncate para mb-0">{{data.items.description}}<br><br></p>
+                            </div>
+                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                <div class="d-flex flex-row align-items-center">
+                                    <h4 class="mr-1">{{data.items.price}}SAR</h4><span class="strike-text"></span>
+                                </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                  
+                {% endfor %}
+
+                {% else %}
+                  <p>Your cart is empty.</p>
+                {% endif %}
+
+              </div>
+
+              </div>
+
+          </div>
+        </div>
+ 
+
+
+                  <div class="d-flex justify-content-between p-2 mb-2 bg-primary">
+                    <h5 class="fw-bold mb-0"></h5>
+                    <h5 class="fw-bold mb-0">
+                <div class="col-lg-6 px-5 py-4">
+  
+                  <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
+  
+                  <form class="mb-5">
+  
+                    <div data-mdb-input-init class="form-outline mb-5">
+                      <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                        value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                      <label class="form-label" for="typeText">Card Number</label>
+                    </div>
+  
+                    <div data-mdb-input-init class="form-outline mb-5">
+                      <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                        value="name" />
+                      <label class="form-label" for="typeName">Name on card</label>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-6 mb-5">
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
+                            size="7" id="exp" minlength="7" maxlength="7" />
+                          <label class="form-label" for="typeExp">Expiration</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-5">
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="password" id="typeText" class="form-control form-control-lg"
+                            value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                          <label class="form-label" for="typeText">Cvv</label>
+                        </div>
+                      </div>
+                  
+  
+                    <p class="mb-5"> لا يمكنك الغاء الطلب بعد الدفع
+                    </p>
+  
+                    <a href="{% url 'index' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Back to shopping</a>
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Buy now</button>
+
+                  </form>
+                  
+                
+  
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>E-Commerce</title>
+    <style>
+        *{
+            font-family:'Courier New', Courier, monospace
+        }
+     </style>
+</head>
+<body style="background-image: url('/static/logo.png');">
+    
+        <header class="section-header">
+
+            <nav class="navbar navbar-white navbar-expand p-0 bg-white">
+
+           
+             <!-- container //  -->
+            </nav> <!-- header-top-light.// -->
+            
+            <section class="header-main border-bottom bg-success">
+              <div class="container-fluid">
+                   <div class="row p-2 d-flex align-items-center">
+                    <h3 class="text-white badge bg-success fst-italic" style="font-size: 60px;  text-align: center;">Angry Rabbit</h3>
+
+                       <div class="col-md-2">
+                           <img  class="d-none d-md-flex" src="/static/logo.png" width="100" height="100">
+                       </div>
+
+                       <div class="col-md-8">
+                        <div class="d-flex form-inputs">
+                          <input class="form-control" type="text" id="search-input" placeholder="Search any product...">
+                          <button onclick="search_products()" id="search-button" class="btn btn-success-emphasis">
+                            <button type="button" class="btn btn-success position-relative">بحث </button>
+                            </div>
+                        <div id="search-results"></div>
+                      </div>
+                     
+                       
+                       <div class="col-md-2">
+                           <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                               <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
+                               <div class="d-flex flex-column ms-2">
+                                <button type="button" class="btn btn-success position-relative">
+                                  <i class="bi bi-cart"></i>
+                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart">
+                                    {{request.session.cart}}
+                                    <span class="visually-hidden">unread messages</span>
+                                  </span>
+                                </button>
+                               </div>    
+                                 
+                           <ul class="navbar-nav d-flex align-items-center  m-5 ">
+                            <li class="nav-item">
+                            <div class="d-flex flex-row">
+                              <i class="bi bi-person-circle text-white"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                        
+                            <a href="#" class="nav-link d-flex align-items-center text-white" data-abc="true"><span>{{request.user}}</span><i class='bx bxs-chevron-down'></i></a>
+                        </li>
+                        
+                      </ul> <!-- list-inline //  -->  
+                           </div> 
+                           
+                                 
+                       </div>
+                     
+                       
+                   </div>
+              </div> 
+            </section>
+            
+            <nav dir="rtl" class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active text-success" aria-current="page" href="{% url 'index' %}">العروض</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-success" href="{% url 'burger' %}">البرجر</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-success" href="{% url 'side_dishes' %}">اطباق جانبية</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-success" href="{% url 'drinks' %}">المشروبات</a>
+                    </li>
+                  
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+    </header>
+
+    <main>
+     {% block content %}
+       
+     {% endblock content %}
+
+    </main>
+
+    <footer>
+
+    </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
